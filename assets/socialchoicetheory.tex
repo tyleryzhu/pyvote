@@ -1,0 +1,82 @@
+\documentclass[11 pt]{scrartcl}
+\usepackage{tylercs}
+\geometry{left=0.75in, top=0.75in, right=0.75in, bottom=0.8in}
+
+\newcommand{\arttitle}{Social Choice Theory Overview}
+\newcommand{\alphanum}{\begin{enumerate}[(a)]}
+\newcommand{\enumend}{\end{enumerate}}
+\newcommand{\BP}{\mathbf{P}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[l]{\arttitle{}}
+\fancyhead[r]{Tyler Zhu}
+\cfoot{\thepage}
+
+\begin{document}
+\title{\Large \arttitle{}}
+\author{\large Tyler Zhu}
+\date{\large\today}
+\maketitle
+
+Thanks to Prof. Wes Holliday for his talk on Arrow's Theorem and Infinite Electorates, from which these notes are based on.
+
+\section{Introduction}
+\subsection{Profiles}
+    Let $X$ (the alternatives) and $V$ (the voters) be nonempty sets. Let $O(X)$ be the set of strict weak orders on $X$.
+    A $\textbf{profile}$ is a function $\mathbf{P}:ZV\to O(X)$.
+    \begin{itemize}
+        \ii Write $x\BP_i y$ for $\langle x,y\rangle \in \BP(i)$.
+        \ii Let $\BP(x,y) = \{i\in V | x\BP_iy\}$.
+        \ii Let $\BP_{|\{x,y\}}$ be the function mapping each $i\in V$ to $\BP(i) \cap \{x,y\}^2$.
+    \end{itemize}
+
+\subsection{SWFs}
+A $\textbf{social welfare function}$ (SWF) is a function $f: O(X)^V \to O(X)$.
+\begin{itemize}
+    \ii Think of $f(\BP)$ as society's preference ranking, given the profile $\BP$ of individual preference rankings.
+    \ii Write $xf(\BP)y$ for $\langle x,y\rangle \in f(\BP)$.
+\end{itemize}
+
+\section{Axioms}
+\begin{itemize}
+    \ii Universal Domain (UD)
+    \begin{itemize}[-]
+        \ii Idea: our SWF should work on any collection of ballots.
+        \ii Formally: $\text{dom}(f)$ is the set of all profiles.
+    \end{itemize}
+    \ii Independence of Irrelevant Alternatives (IIA)
+    \begin{itemize}[-]
+        \ii Idea: the social preference for $x$ vs. $y$ shoudl depend only on how each voter ranked $x$ vs. $y$.
+        \ii Formally: for any profiles $\BP$ and $\BP'$ such that $\BP_{|\{x,y\}} = \BP'_{|\{x,y\}}$:
+        \[ xf(\BP)y \iff xf(\BP')y.\]
+    \end{itemize}
+    \ii Ranking (R)
+    \begin{itemize}[-]
+        \ii Idea: our voting system should yield a $\emph{ranking}$ of the candidates.
+        \ii Formally: for any profile $\BP$, $f(\BP)$ is a strict weak order.
+    \end{itemize}
+    \ii Pareto (P)
+    \begin{itemize}[-]
+        \ii Idea: if every voter prefers $x$ to $y$, then society should prefer $x$ to $y$.
+        \ii Formally: for any profile $\BP$ with $V\subseteq \BP(x,y)$, we have $xf(\BP)y$.
+    \end{itemize}
+    \ii Nondictatorship (ND)
+    \begin{itemize}[-]
+        \ii Idea: no one voter should have their way no matter how others vote.
+        \ii Formally: there is no $i\in V$ such that for all profiles $\BP$, if $x\BP_iy$ then $xf(\BP)y$.
+    \end{itemize}
+\end{itemize}
+
+The main results are the following.
+\begin{theorem}[Arrow 1951]
+    If $|X|\geq 3$ and $V$ is finite, then there is no SWF satisfying Universal Domain,
+    Independence of Irrelevant Alternatives, Ranking, Pareto, and Nondictatorship.
+\end{theorem}
+
+\begin{theorem}[Fishburn 1970]
+    If $V$ is infinite, then there is a SWF satisfying Universal Domain,
+    Independence of Irrelevant Alternatives, Ranking, Pareto, and Nondictatorship.
+\end{theorem}
+
+\end{document}
